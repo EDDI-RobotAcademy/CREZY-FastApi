@@ -17,13 +17,16 @@ lyrics_crawling = APIRouter()
 @lyrics_crawling.get("/get_lyrics")
 async def get_lyrics(song_title: str):
     song_id = search_song_id(song_title)
+    print(song_id)
 
     if song_id:
         print(f"The song ID for '{song_title}' is: {song_id}")
     else:
         print("The song ID could not be found.")
 
-    lyrics = get_lyrics_by_song_id_19(song_id)
+    lyrics = get_lyrics_by_song_id(song_id)
+    if lyrics is None:
+        lyrics = get_lyrics_by_song_id_19(song_id)
     if lyrics:
         print(lyrics)
     else:
@@ -32,26 +35,26 @@ async def get_lyrics(song_title: str):
     return lyrics
 
 
-# def get_lyrics_by_song_id(song_id):
-#     url = f"https://www.melon.com/song/detail.htm?songId={song_id}"
-#     headers = {
-#         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
-#     }
-#
-#     response = requests.get(url, headers=headers)
-#     soup = BeautifulSoup(response.text, "html.parser")
-#
-#     # time.sleep(random.uniform(2, 4))
-#
-#     lyrics = soup.find("div", class_="lyric")
-#
-#     if lyrics:
-#         for br in lyrics.find_all("br"):
-#             br.replace_with("<br>")
-#         print(lyrics.get_text().strip())
-#         return lyrics.get_text().strip()
-#
-#     return None
+def get_lyrics_by_song_id(song_id):
+    url = f"https://www.melon.com/song/detail.htm?songId={song_id}"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+    }
+
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # time.sleep(random.uniform(2, 4))
+
+    lyrics = soup.find("div", class_="lyric")
+
+    if lyrics:
+        for br in lyrics.find_all("br"):
+            br.replace_with("<br>")
+        print(lyrics.get_text().strip())
+        return lyrics.get_text().strip()
+
+    return None
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -68,15 +71,15 @@ def get_lyrics_by_song_id_19(song_id):
     driver.get(base_url)
 
     driver.find_element(By.XPATH, '//*[@id="id"]').send_keys(client_id)
-    time.sleep(2)
+    time.sleep(1)
     driver.find_element(By.XPATH, '//*[@id="pwd"]').send_keys(client_password)
-    time.sleep(2)
+    time.sleep(1)
 
     driver.find_element(By.XPATH, '//*[@id="btnLogin"]').click()
-    time.sleep(2)
+    time.sleep(1)
 
     driver.get(url)
-    time.sleep(2)
+    time.sleep(1)
 
     soup = BeautifulSoup(driver.page_source, "html.parser")
 

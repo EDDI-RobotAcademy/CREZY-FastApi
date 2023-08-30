@@ -23,6 +23,6 @@ app.add_middleware(
 
 app.include_router(lyrics_crawling)
 
-search_songs()
-organization_result()
-drop_duplicate_result()
+# search_songs()
+# organization_result()
+# drop_duplicate_result()
