@@ -58,7 +58,7 @@ def get_lyrics_by_song_id(song_id):
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-load_dotenv(os.path.join(BASE_DIR, "../../.env"))
+load_dotenv(os.path.join(BASE_DIR, "../.env"))
 client_id = os.environ["CRAWLING_ID"]
 client_password = os.environ["CRAWLING_PASSWORD"]
 

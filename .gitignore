@@ -1,4 +1,4 @@
 *.xlsx
 *.csv
 .idea
-.env
+app/.env
