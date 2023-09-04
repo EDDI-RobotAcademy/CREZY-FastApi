@@ -63,7 +63,8 @@ jobs:
       - name: make properties files
         run: |
           pwd
-          echo "${{ secrets.ENV }}" > app/.env
+          echo "${{ secrets.ENV }}" > .env
+          cat .env
 
       - name: Deploy to prod
         uses: appleboy/ssh-action@v0.1.10
