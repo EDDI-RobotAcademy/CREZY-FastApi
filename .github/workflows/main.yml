@@ -62,7 +62,6 @@ jobs:
 
       - name: make properties files
         run: |
-          cd app
           pwd
           echo "${{ secrets.ENV }}" > ./.env
 
