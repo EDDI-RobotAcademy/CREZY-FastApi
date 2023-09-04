@@ -1,4 +1,4 @@
-﻿annotated-types==0.5.0
+annotated-types==0.5.0
 anyio==3.7.1
 attrs==23.1.0
 beautifulsoup4==4.12.2
@@ -15,6 +15,7 @@ h11==0.14.0
 idna==3.4
 numpy==1.24.4
 openpyxl==3.1.2
+ordereddict==1.1
 outcome==1.2.0
 packaging==23.1
 pandas==2.0.3
@@ -24,8 +25,8 @@ pydantic_core==2.6.3
 pypiwin32==223
 PySocks==1.7.1
 python-dateutil==2.8.2
-python-dotenv==0.5.0
-pytz==2023.3
+python-dotenv==1.0.0
+pytz==2022.6
 pywin32==306
 requests==2.31.0
 selenium==4.11.2
