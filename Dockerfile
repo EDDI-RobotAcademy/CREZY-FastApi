@@ -1,7 +1,8 @@
 FROM arm64v8/python:3.9
 
 COPY ./app /app/app
-COPY ./app/requirements.txt /app
+COPY requirements.txt /app
+COPY .env /app
 WORKDIR /app
 
 RUN pip install -r requirements.txt

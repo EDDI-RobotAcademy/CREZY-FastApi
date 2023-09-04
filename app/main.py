@@ -7,11 +7,9 @@ from app.crawling.crawling import lyrics_crawling
 
 app = FastAPI()
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-load_dotenv(os.path.join(BASE_DIR, ".env"))
-origins_host = os.environ["ORIGINS_HOST"]
+load_dotenv()
 
-origins = [origins_host]
+origins = os.getenv("ORIGINS_HOST")
 
 app.add_middleware(
     CORSMiddleware,
